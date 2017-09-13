@@ -12,25 +12,50 @@ public class BeeperBot extends Robot
     }
     public void runRace() {
         while (frontIsClear()) {
-            collectBepperSteeple();
+            collectBeeperSteeple();
         }
     }
     public void collectBeeperSteeple() {
-        while (
+        findBeepers();
+        }
+        public void findBeepers() {
+        faceEast();
+        while (!nextToABeeper() && (frontIsClear())) {
+            move();
+        }
+        collectColumn();
+        resetPosition();
+        faceEast();
     }
-    public void 
-    public void findBeepers() {
-    faceEast();
-    while (!nextToABeeper()) {
-        move();
+    public void collectColumn() {
+        faceNorth();
+        while (nextToABeeper()) {
+            pickBeeper();
+            move();
+            }
+    }
+    public void faceNorth() {
+        while (!facingNorth()) {
+            turnLeft();
+        }
+    }
+    public void faceSouth() {
+        while(!facingSouth()) {
+               turnLeft();
+            }
+        }
+        public void faceEast() {
+        while (!facingEast()) {
+            turnLeft();
+        }
+    }
+    public void resetPosition() {
+        faceSouth();
+        while (frontIsClear()) {
+            move();
+        }
     }
 }
-   public void faceEast() {
-    while (!facingEast()) {
-        turnLeft();
-    }
-}
-}
-
-
-
+    
+    
+    
