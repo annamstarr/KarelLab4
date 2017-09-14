@@ -13,32 +13,46 @@
     public void escapeRoom() {
             findWall();
             faceNorth();
-            if (checkLeft()) {
-                exit();
+            while (frontIsClear()) {
+                move();
+                checkLeft();
+                faceNorth();
             }
             faceEast();
-            if (checkLeft()) {
-                exit();
+            while (frontIsClear()) {
+                move();
+                checkLeft();
+                faceEast();
             }
             faceSouth();
-            if (checkLeft()) {
-                exit();
+            while (frontIsClear()) {
+                move();
+                checkLeft();
+                faceSouth();
             }
             faceWest();
-            if (checkLeft()) {
-                exit();
+            while (frontIsClear()) {
+                move();
+                checkLeft();
+                faceWest();
+            }
+            faceNorth();
+            while (frontIsClear()) {
+                move();
+                checkLeft();
+                faceNorth();
             }
         }
     public void findWall() {
            faceWest();
            while (frontIsClear()) {
                 move();
-            }
+           }
         }
     public void faceSouth() {
-            while (!facingSouth()) {
+           while (!facingSouth()) {
                 turnLeft();
-            }
+           }
         }
     public void faceWest() {
            while (!facingWest()) {
@@ -55,13 +69,10 @@
                 turnLeft();
             }
         }
-    public boolean checkLeft() {
+    public void checkLeft() {
            turnLeft();
            if (frontIsClear()) {
-                return true;
-            }
-            else {
-                return false;
+                leaveRoom();
             }
         }
     public void turnRight() {
@@ -69,8 +80,7 @@
         turnLeft();
         turnLeft();
     }
-    public void exit() {
-        turnLeft();
+    public void leaveRoom() {
         move();
         turnOff();
     }
