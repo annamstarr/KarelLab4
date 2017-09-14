@@ -11,79 +11,68 @@
             super(st, av, dir, numBeepers);
         }
     public void escapeRoom() {
-            findWall();
+            findSouthWestCorner();
             faceNorth();
-            while (frontIsClear()) {
-                move();
-                checkLeft();
-                faceNorth();
-            }
+            checkWall();
             faceEast();
-            while (frontIsClear()) {
-                move();
-                checkLeft();
-                faceEast();
-            }
+            checkWall();
             faceSouth();
-            while (frontIsClear()) {
-                move();
-                checkLeft();
-                faceSouth();
-            }
+            checkWall();
             faceWest();
-            while (frontIsClear()) {
+            checkWall();
+    }
+    public void findSouthWestCorner() {
+           faceSouth();
+           while (frontIsClear()) {
                 move();
-                checkLeft();
-                faceWest();
-            }
-            faceNorth();
-            while (frontIsClear()) {
-                move();
-                checkLeft();
-                faceNorth();
-            }
-        }
-    public void findWall() {
+           }
            faceWest();
            while (frontIsClear()) {
                 move();
            }
-        }
+    }
     public void faceSouth() {
            while (!facingSouth()) {
                 turnLeft();
            }
-        }
+    }
     public void faceWest() {
            while (!facingWest()) {
                 turnLeft();
             }
-        }
+    }
     public void faceNorth() {
            while (!facingNorth()) {
                 turnLeft();
             }
-        }
+    }
     public void faceEast() {
            while (!facingEast()) {
                 turnLeft();
             }
-        }
+    }
     public void checkLeft() {
            turnLeft();
            if (frontIsClear()) {
                 leaveRoom();
             }
-        }
+           turnRight();
+    }
     public void turnRight() {
-        turnLeft();
-        turnLeft();
-        turnLeft();
+           turnLeft();
+           turnLeft();
+           turnLeft();
     }
     public void leaveRoom() {
-        move();
-        turnOff();
+           move();
+           turnOff();
     }
+    public void checkWall() {
+           while (frontIsClear()) {
+                move();
+                checkLeft();
+           }
     }
+}
     
     
