@@ -3,17 +3,31 @@ import kareltherobot.*;
 
 
 /**
- * @author :  D. Appel
+ * @author :  A. Starr
  */
-public class Problem3 extends Robot
+public class Problem3 extends Problem1
 {
     public Problem3(int st, int av, Direction dir, int numBeepers) {
         super(st, av, dir, numBeepers);
     }
     
     public void closeAllWindows() {
-        
+        checkWall();
+        faceSouth();
+        checkWall();
+        faceWest();
+        checkWall();
+        faceNorth();
+        checkWall();
+        faceEast();
+        checkWall();
     }
-   
+    public void checkLeft() {
+           turnLeft();
+           if (frontIsClear() && !nextToABeeper()) {
+                putBeeper();
+            }
+           turnRight();
+    }
 }
 
